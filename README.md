@@ -1,2 +1,2 @@
-# ExLoggerForFireFox
-ExLogger对应Chrome插件
+# ExLoggerForFirefox
+ExLogger对应Firefox插件，需要Firefox 48以上版本。
