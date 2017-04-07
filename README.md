@@ -1,0 +1,2 @@
+# ExLoggerForFireFox
+ExLogger对应Chrome插件
