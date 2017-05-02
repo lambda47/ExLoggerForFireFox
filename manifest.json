@@ -1,6 +1,6 @@
 {
   "name": "ExLogger",
-  "version": "2.1",
+  "version": "2.2",
   "description": "ExLogger for Chrome extension",
 
   "manifest_version": 2,

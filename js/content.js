@@ -1,7 +1,6 @@
 (function() {
 
-    function logTable(title, obj) {
-        console.info('%s:', title);
+    function logTable(obj) {
         var tableData = [];
         for (var k in obj) {
             if (Array.isArray(obj[k])) {
@@ -28,16 +27,19 @@
                     requestName = profilerData.DIRECTORY + '/';
                 }
                 requestName += (profilerData.CONTROLLER + '=>' + profilerData.ACTION);
-                console.group() ;
+                console.group();
                 console.log('%c%s', 'background-color:#cccccc;color:#0f88eb;font-weight:bold;font-size:18px', requestName);
                 if (profilerData.GET) {
-                    logTable('GET', profilerData.GET)
+                    console.info('GET:');
+                    logTable(profilerData.GET)
                 }
                 if (profilerData.POST) {
-                    logTable('POST', profilerData.POST)
+                    console.info('POST:');
+                    logTable(profilerData.POST)
                 }
                 if (profilerData.SESSION) {
-                    logTable('SESSION', profilerData.SESSION)
+                    console.info('SESSION:');
+                    logTable(profilerData.SESSION)
                 }
                 if (profilerData.QUERIES) {
                     console.info('QUERY:');
@@ -45,6 +47,11 @@
                         var sqlParser = new Parser(profilerData.QUERIES[j].sql, profilerData.QUERIES[j].time);
                         sqlParser.parse();
                         sqlParser.display();
+                        if (profilerData.QUERIES[j].explain != undefined) {
+                            for (var k = 0; k < profilerData.QUERIES[j].explain.length; k++) {
+                                logTable(profilerData.QUERIES[j].explain[k]);
+                            }
+                        }
                     }
                 }
                 console.groupEnd();
